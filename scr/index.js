@@ -38,15 +38,6 @@ app.post('/canciones', (req, res) => {
     res.send(); 
 })
 
-app.delete('/canciones/:id', (req, res) => {
-    collection.deleteOne(
-        { _id: req.params.id }
-    )
-        .then(result => {
-            res.json('Deleted')
-        }) 
-        .catch(error => console.error(error))
-})
 
 app.put('/canciones/:id', (req, res) => {
     collection.findOneAndUpdate(
@@ -64,6 +55,15 @@ app.put('/canciones/:id', (req, res) => {
         .catch(error => console.error(error))
 });
 
+app.delete('/canciones/:id', (req, res) => {
+    collection.deleteOne(
+        { _id: req.params.id }
+    )
+        .then(result => {
+            res.json('Deleted')
+        }) 
+        .catch(error => console.error(error))
+})
 
 
 MongoClient.connect(url, (err, client) => {
